@@ -40,7 +40,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'leads',
-    'django_admin_inline_paginator',
 ]
 
 MIDDLEWARE = [

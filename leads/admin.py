@@ -2,8 +2,6 @@ from django.contrib import admin
 from .models import User, Company, Client, Distributors, Sold, Product, Article
 from django.contrib.auth.admin import UserAdmin
 
-from django_admin_inline_paginator.admin import TabularInlinePaginated
-
 
 class CompanyAdmin(admin.ModelAdmin):
     def changelist_view(self, request, extra_context=None):
