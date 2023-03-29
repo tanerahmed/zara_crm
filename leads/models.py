@@ -77,6 +77,7 @@ class Sold(models.Model):
 
     sold_price = models.DecimalField(max_digits=6, decimal_places=2, default=0)
     buy_price = models.DecimalField(max_digits=6, decimal_places=2, default=0)
+    profit_procent = models.IntegerField(blank=True, null=True)
     product_information = models.TextField(blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
