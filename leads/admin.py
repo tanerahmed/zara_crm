@@ -2,6 +2,8 @@ from django.contrib import admin
 from .models import User, Company, Client, Distributors, Sold, Product, Article
 from django.contrib.auth.admin import UserAdmin
 
+from django_admin_inline_paginator.admin import TabularInlinePaginated
+
 
 class CompanyAdmin(admin.ModelAdmin):
     def changelist_view(self, request, extra_context=None):
@@ -20,9 +22,12 @@ class ClientAdmin(admin.ModelAdmin):
 
 
 class SoldAdmin(admin.ModelAdmin):
-    list_display = ('company_buyer', 'product', 'items', 'profit', 'created_at')
+    list_per_page = 10
+    # list_max_show_all = 5
+    list_display = ('company_buyer', 'product', 'items', 'profit', 'created_at', 'sold')
     readonly_fields = ('profit',)
-    list_filter = ('product', 'created_at', 'company_buyer__company_name')
+    list_filter = ('product', 'created_at', 'company_buyer__company_name', 'sold')
+    list_editable = ("sold",)
 
 
 class ArticleAdmin(admin.ModelAdmin):

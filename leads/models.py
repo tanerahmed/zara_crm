@@ -82,6 +82,8 @@ class Sold(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
+    sold = models.BooleanField(default=False)
+
     def profit(self):
         calculate = self.sold_price - self.buy_price
         return calculate
