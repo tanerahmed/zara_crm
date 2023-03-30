@@ -8,7 +8,7 @@ class CompanyAdmin(admin.ModelAdmin):
         extra_context = {'title': 'Избери Компания за промяна.'}
         return super(CompanyAdmin, self).changelist_view(request, extra_context=extra_context)
 
-    list_display = ('company_name', 'address', 'created_date')
+    list_display = ('name', 'address', 'created_date')
     list_filter = ('created_date',)
 
 
@@ -24,7 +24,7 @@ class SoldAdmin(admin.ModelAdmin):
     # list_max_show_all = 5
     list_display = ('company_buyer', 'product', 'items', 'profit', 'created_at', 'sold')
     readonly_fields = ('profit',)
-    list_filter = ('product', 'created_at', 'company_buyer__company_name', 'sold')
+    list_filter = ('product', 'created_at', 'company_buyer__name', 'sold')
     list_editable = ("sold",)
 
 

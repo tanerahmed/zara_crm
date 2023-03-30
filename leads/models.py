@@ -11,14 +11,14 @@ class User(AbstractUser):
 
 
 class Company(models.Model):
-    company_name = models.CharField(max_length=100, unique=True)
+    name = models.CharField(max_length=100, unique=True)
     address = models.CharField(max_length=100, blank=True, null=True)
     created_date = models.DateField(null=True, blank=True)
     company_info = models.TextField(blank=True, null=True)
     information = models.TextField(blank=True, null=True)
 
     def __str__(self):
-        return f"{self.company_name}"
+        return f"{self.name}"
 
     class Meta:
         verbose_name = 'Компания'
