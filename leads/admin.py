@@ -12,10 +12,6 @@ class CompanyAdmin(admin.ModelAdmin):
 
     list_display = ('name', 'address', 'category', 'work_with_us')
     list_filter = ('category', 'work_with_us', 'address')
-#TODO !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-#TODO !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-#TODO !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-# Направи ФИЛТЪР ПО ИМЕ
 
 
 class ClientAdmin(admin.ModelAdmin):
@@ -28,10 +24,16 @@ class ClientAdmin(admin.ModelAdmin):
 class SoldAdmin(admin.ModelAdmin):
     list_per_page = 10
     # list_max_show_all = 5
-    list_display = ('company_buyer', 'product', 'items', 'profit', 'created_at', 'sold')
+    list_display = ('company_buyer', 'product', 'items', 'sold_price',
+                    'delivery_price', 'profit', 'date_custom', 'we_delivered', 'sold')
     readonly_fields = ('profit',)
-    list_filter = ('product', 'created_at', 'company_buyer__name', 'sold')
+    list_filter = ('product', 'created_at', 'sold', 'we_delivered', 'company_buyer__name',)
     list_editable = ("sold",)
+
+    def date_custom(self, obj):
+        return obj.created_at.strftime("%d.%m.%Y ")
+    # date_custom.admin_order_field = 'timefield'
+    date_custom.short_description = 'Date'
 
 
 class ArticleAdmin(admin.ModelAdmin):

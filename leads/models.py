@@ -34,6 +34,7 @@ class Company(models.Model):
     class Meta:
         verbose_name = 'Компания'
         verbose_name_plural = 'Компании'
+        ordering = ('name',)
 
 
 class Client(models.Model):
@@ -51,6 +52,7 @@ class Client(models.Model):
     class Meta:
         verbose_name = 'Клиент'
         verbose_name_plural = 'Клиенти'
+        ordering = ('first_name',)
 
     def __str__(self):
         return f"{self.first_name} {self.last_name}"
@@ -93,7 +95,8 @@ class Sold(models.Model):
     product_information = models.TextField(blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-
+    we_delivered = models.BooleanField(default=True)
+    delivery_price = models.DecimalField(max_digits=6, decimal_places=2, default=0)
     sold = models.BooleanField(default=False)
 
     def profit(self):
