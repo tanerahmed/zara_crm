@@ -4,12 +4,18 @@ from django.contrib.auth.admin import UserAdmin
 
 
 class CompanyAdmin(admin.ModelAdmin):
+    list_per_page = 15
+
     def changelist_view(self, request, extra_context=None):
         extra_context = {'title': 'Избери Компания за промяна.'}
         return super(CompanyAdmin, self).changelist_view(request, extra_context=extra_context)
 
-    list_display = ('name', 'address', 'created_date')
-    list_filter = ('created_date',)
+    list_display = ('name', 'address', 'category', 'work_with_us')
+    list_filter = ('category', 'work_with_us', 'address')
+#TODO !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+#TODO !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+#TODO !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+# Направи ФИЛТЪР ПО ИМЕ
 
 
 class ClientAdmin(admin.ModelAdmin):

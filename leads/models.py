@@ -11,11 +11,22 @@ class User(AbstractUser):
 
 
 class Company(models.Model):
+    CATEGORY_CHOICES = (
+        ('Small', 'Small'),
+        ('Medium', 'Medium'),
+        ('Big', 'Big'),
+    )
+
     name = models.CharField(max_length=100, unique=True)
+    phone = models.CharField(max_length=25, blank=True, null=True)
+    email = models.CharField(max_length=50, blank=True, null=True)
+    social_media_profile_url = models.URLField(max_length=200, blank=True, null=True)
     address = models.CharField(max_length=100, blank=True, null=True)
     created_date = models.DateField(null=True, blank=True)
     company_info = models.TextField(blank=True, null=True)
     information = models.TextField(blank=True, null=True)
+    category = models.CharField(max_length=50, choices=CATEGORY_CHOICES, blank=True, null=True)
+    work_with_us = models.BooleanField(default=False)
 
     def __str__(self):
         return f"{self.name}"
@@ -31,6 +42,7 @@ class Client(models.Model):
     last_name = models.CharField(max_length=20, blank=True, null=True)
     birthday = models.DateField(null=True, blank=True)
     phone = models.CharField(max_length=25, blank=True, null=True)
+    email = models.CharField(max_length=50, blank=True, null=True)
     social_media_profile_url = models.URLField(max_length=200, blank=True, null=True)
     address = models.CharField(max_length=100, blank=True, null=True)
     client_info = models.TextField(blank=True, null=True)
