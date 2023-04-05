@@ -25,7 +25,7 @@ class SoldAdmin(admin.ModelAdmin):
     list_per_page = 10
     # list_max_show_all = 5
     list_display = ('company_buyer', 'product', 'items', 'sold_price',
-                    'delivery_price', 'profit', 'date_custom', 'we_delivered', 'sold')
+                    'delivery_price', 'profit', 'date_custom', 'we_delivered', 'sold', 'product_information')
     readonly_fields = ('profit',)
     list_filter = ('product', 'created_at', 'sold', 'we_delivered', 'company_buyer__name',)
     list_editable = ("sold",)
